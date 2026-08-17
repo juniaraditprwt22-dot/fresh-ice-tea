@@ -3,18 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresh Ice Tea</title>
+    <title>Fresh Ice Tea - Pemesanan Online</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f5;
+            color: #222;
+        }
+
+        header {
+            background: #176b4d;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #176b4d;
+            margin-top: 0;
+        }
+
+        .menu-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            margin: 0 0 5px;
+        }
+
+        .price {
+            color: #176b4d;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 18px;
+            background: #176b4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #12563e;
+        }
+
+        #hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f5ed;
+            border-radius: 8px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
 </head>
+
 <body>
 
+<header>
     <h1>Fresh Ice Tea</h1>
     <p>Website Pemesanan Online</p>
+</header>
 
-    <h2>Menu</h2>
+<div class="container">
 
-    <p>Es Teh Original - Rp5.000</p>
-    <p>Es Teh Lemon - Rp7.000</p>
-    <p>Es Teh Susu - Rp8.000</p>
+    <div class="card">
+        <h2>Menu</h2>
+
+        <div class="menu-item">
+            <h3>Es Teh Original</h3>
+            <p class="price">Rp5.000</p>
+            <label>Jumlah</label>
+            <input type="number" id="original" min="0" value="0">
+        </div>
+
+        <div class="menu-item">
+            <h3>Es Teh Lemon</h3>
+            <p class="price">Rp7.000</p>
+            <label>Jumlah</label>
+            <input type="number" id="lemon" min="0" value="0">
+        </div>
+
+        <div class="menu-item">
+            <h3>Es Teh Susu</h3>
+            <p class="price">Rp8.000</p>
+            <label>Jumlah</label>
+            <input type="number" id="susu" min="0" value="0">
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Data Pemesan</h2>
+
+        <label>Nama Pemesan</label>
+        <input type="text" id="nama" placeholder="Masukkan nama">
+
+        <label>Alamat</label>
+        <input type="text" id="alamat" placeholder="Masukkan alamat">
+
+        <label>Jarak dari Stand (km)</label>
+        <input type="number" id="jarak" min="0" step="0.1"
+               placeholder="Contoh: 2.5">
+
+        <button onclick="pesan()">Pesan Sekarang</button>
+
+        <div id="hasil"></div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Fresh Ice Tea
+</footer>
+
+<script>
+function pesan() {
+
+    let nama = document.getElementById("nama").value;
+    let alamat = document.getElementById("alamat").value;
+    let jarak = parseFloat(document.getElementById("jarak").value);
+
+    let original = parseInt(document.getElementById("original").value) || 0;
+    let lemon = parseInt(document.getElementById("lemon").value) || 0;
+    let susu = parseInt(document.getElementById("susu").value) || 0;
+
+    if (nama === "" || alamat === "" || isNaN(jarak)) {
+        alert("Silakan lengkapi data pemesan.");
+        return;
+    }
+
+    if (jarak > 4) {
+        alert("Maaf, pesanan hanya dapat dilakukan maksimal 4 km dari stand.");
+        return;
+    }
+
+    if (original + lemon + susu === 0) {
+        alert("Silakan pilih minimal 1 menu.");
+        return;
+    }
+
+    let total =
+        (original * 5000) +
+        (lemon * 7000) +
+        (susu * 8000);
+
+    let hasil = document.getElementById("hasil");
+
+    hasil.style.display = "block";
+
+    hasil.innerHTML = `
+        <h3>Pesanan Berhasil!</h3>
+
+        <p><b>Nama:</b> ${nama}</p>
+        <p><b>Alamat:</b> ${alamat}</p>
+        <p><b>Jarak:</b> ${jarak} km</p>
+
+        <hr>
+
+        <p>Es Teh Original: ${original}</p>
+        <p>Es Teh Lemon: ${lemon}</p>
+        <p>Es Teh Susu: ${susu}</p>
+
+        <hr>
+
+        <h3>Total: Rp${total.toLocaleString("id-ID")}</h3>
+
+        <p><b>Status:</b> Pesanan masuk dan sedang diproses.</p>
+    `;
+}
+</script>
+
+</body>
+</html>    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.cart {
+    background: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 7px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.order-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Fresh Ice Tea</h1>
+    <p>Website Pemesanan Online</p>
+</header>
+
+<div class="container">
+
+    <h2>🍹 Menu</h2>
+
+    <div class="menu">
+
+        <div class="item">
+            <h3>Es Teh Original</h3>
+            <div class="harga">Rp5.000</div>
+            <button onclick="tambahPesanan('Es Teh Original', 5000)">
+                + Tambah
+            </button>
+        </div>
+
+        <div class="item">
+            <h3>Es Teh Lemon</h3>
+            <div class="harga">Rp7.000</div>
+            <button onclick="tambahPesanan('Es Teh Lemon', 7000)">
+                + Tambah
+            </button>
+        </div>
+
+        <div class="item">
+            <h3>Es Teh Susu</h3>
+            <div class="harga">Rp8.000</div>
+            <button onclick="tambahPesanan('Es Teh Susu', 8000)">
+                + Tambah
+            </button>
+        </div>
+
+    </div>
+
+    <div class="cart">
+
+        <h2>🛒 Keranjang Pesanan</h2>
+
+        <div id="keranjang">
+            Belum ada pesanan.
+        </div>
+
+        <p class="total">
+            Total: Rp<span id="total">0</span>
+        </p>
+
+        <h2>👤 Data Pembeli</h2>
+
+        <input
+            type="text"
+            id="nama"
+            placeholder="Nama pembeli">
+
+        <input
+            type="text"
+            id="telepon"
+            placeholder="Nomor HP">
+
+        <textarea
+            id="alamat"
+            rows="3"
+            placeholder="Alamat / lokasi pengantaran"></textarea>
+
+        <button
+            class="order-button"
+            onclick="kirimPesanan()">
+            ✅ Kirim Pesanan
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+let pesanan = [];
+let total = 0;
+
+function tambahPesanan(nama, harga) {
+
+    let item = pesanan.find(
+        p => p.nama === nama
+    );
+
+    if (item) {
+        item.jumlah++;
+    } else {
+        pesanan.push({
+            nama: nama,
+            harga: harga,
+            jumlah: 1
+        });
+    }
+
+    tampilkanKeranjang();
+}
+
+function tampilkanKeranjang() {
+
+    let keranjang =
+        document.getElementById("keranjang");
+
+    total = 0;
+
+    if (pesanan.length === 0) {
+
+        keranjang.innerHTML =
+            "Belum ada pesanan.";
+
+        document.getElementById("total")
+            .innerText = "0";
+
+        return;
+    }
+
+    keranjang.innerHTML = "";
+
+    pesanan.forEach(item => {
+
+        let subtotal =
+            item.harga * item.jumlah;
+
+        total += subtotal;
+
+        keranjang.innerHTML += `
+            <p>
+                <b>${item.nama}</b>
+                × ${item.jumlah}
+                <br>
+                Rp${subtotal.toLocaleString("id-ID")}
+            </p>
+        `;
+    });
+
+    document.getElementById("total")
+        .innerText =
+        total.toLocaleString("id-ID");
+}
+
+function kirimPesanan() {
+
+    let nama =
+        document.getElementById("nama").value;
+
+    let telepon =
+        document.getElementById("telepon").value;
+
+    let alamat =
+        document.getElementById("alamat").value;
+
+    if (pesanan.length === 0) {
+
+        alert(
+            "Silakan pilih menu terlebih dahulu."
+        );
+
+        return;
+    }
+
+    if (
+        nama === "" ||
+        telepon === "" ||
+        alamat === ""
+    ) {
+
+        alert(
+            "Silakan lengkapi data pembeli."
+        );
+
+        return;
+    }
+
+    alert(
+        "Pesanan berhasil dibuat!\n\n" +
+        "Nama: " + nama +
+        "\nTotal: Rp" +
+        total.toLocaleString("id-ID")
+    );
+}
+
+</script>
 
 </body>
 </html>
