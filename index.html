@@ -107,6 +107,7 @@ header p {
   border: none;
   border-radius: 9px;
   font-size: 21px;
+  cursor: pointer;
 }
 
 .jumlah {
@@ -185,6 +186,9 @@ textarea {
   cursor: pointer;
 }
 
+.pesan:active {
+  opacity: 0.8;
+}
 </style>
 </head>
 
@@ -212,10 +216,12 @@ textarea {
     <input id="nama" placeholder="Masukkan nama">
 
     <label for="alamat">Alamat pengantaran</label>
-    <textarea id="alamat" placeholder="Masukkan alamat lengkap"></textarea>
+    <textarea id="alamat"
+      placeholder="Masukkan alamat lengkap"></textarea>
 
     <label for="catatan">Catatan pesanan</label>
-    <textarea id="catatan" placeholder="Contoh: es sedikit, gula normal"></textarea>
+    <textarea id="catatan"
+      placeholder="Contoh: es sedikit, gula normal"></textarea>
   </section>
 </main>
 
@@ -225,6 +231,7 @@ textarea {
       <div class="catatan">TOTAL PESANAN</div>
       <div class="total" id="total">Rp0</div>
     </div>
+
     <button class="pesan" onclick="kirimPesanan()">
       Pesan via WhatsApp
     </button>
@@ -233,7 +240,8 @@ textarea {
 
 <script>
 // NOMOR WHATSAPP PEMILIK
-const nomor = "6282230067248";
+// Nomor asli: 085607217885
+const nomor = "6285607217885";
 
 const produk = [
   { nama: "Es Teh", harga: 3000, gambar: "🧋" },
@@ -261,6 +269,7 @@ produk.forEach((item, i) => {
     <div class="foto">${item.gambar}</div>
     <h3>${item.nama}</h3>
     <div class="harga">${rupiah(item.harga)}</div>
+
     <div class="kontrol">
       <button onclick="ubahJumlah(${i}, -1)">−</button>
       <span class="jumlah" id="jumlah-${i}">0</span>
@@ -273,24 +282,35 @@ produk.forEach((item, i) => {
 
 function ubahJumlah(i, perubahan) {
   jumlah[i] = Math.max(0, jumlah[i] + perubahan);
-  document.getElementById("jumlah-" + i).textContent = jumlah[i];
+
+  document.getElementById("jumlah-" + i).textContent =
+    jumlah[i];
+
   hitungTotal();
 }
 
 function hitungTotal() {
   const total = produk.reduce(
-    (hasil, item, i) => hasil + item.harga * jumlah[i],
+    (hasil, item, i) =>
+      hasil + item.harga * jumlah[i],
     0
   );
 
-  document.getElementById("total").textContent = rupiah(total);
+  document.getElementById("total").textContent =
+    rupiah(total);
+
   return total;
 }
 
 function kirimPesanan() {
-  const nama = document.getElementById("nama").value.trim();
-  const alamat = document.getElementById("alamat").value.trim();
-  const catatan = document.getElementById("catatan").value.trim();
+  const nama =
+    document.getElementById("nama").value.trim();
+
+  const alamat =
+    document.getElementById("alamat").value.trim();
+
+  const catatan =
+    document.getElementById("catatan").value.trim();
 
   const dipilih = produk
     .map((item, i) => ({
@@ -310,7 +330,9 @@ function kirimPesanan() {
   }
 
   const daftar = dipilih.map(item =>
-    `${item.nama} x${item.jumlah} = ${rupiah(item.harga * item.jumlah)}`
+    `${item.nama} x${item.jumlah} = ${
+      rupiah(item.harga * item.jumlah)
+    }`
   ).join("\n");
 
   const total = hitungTotal();
@@ -328,8 +350,8 @@ Total: ${rupiah(total)}
 Catatan: ${catatan || "-"}`;
 
   const url =
-    "https://wa.me/" + nomor + "?text=" +
-    encodeURIComponent(pesan);
+    "https://wa.me/" + nomor +
+    "?text=" + encodeURIComponent(pesan);
 
   window.location.href = url;
 }
