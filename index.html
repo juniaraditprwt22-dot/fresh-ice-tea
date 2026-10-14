@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresh Ice Tea - Pesan Online</title>
+<title>Fresh Ice Tea</title>
 
 <style>
 * {
@@ -182,11 +182,9 @@ textarea {
   padding: 13px 15px;
   font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.pesan:active, .kontrol button:active {
-  opacity: 0.8;
-}
 </style>
 </head>
 
@@ -211,7 +209,7 @@ textarea {
     <h2 class="judul">📝 Data Pemesan</h2>
 
     <label for="nama">Nama kamu</label>
-    <input id="nama" placeholder="Masukkan nama" autocomplete="name">
+    <input id="nama" placeholder="Masukkan nama">
 
     <label for="alamat">Alamat pengantaran</label>
     <textarea id="alamat" placeholder="Masukkan alamat lengkap"></textarea>
@@ -235,8 +233,7 @@ textarea {
 
 <script>
 // NOMOR WHATSAPP PEMILIK
-// Nomor 085607217885 ditulis menjadi 6285607217885
-const nomor = "6285607217885";
+const nomor = "6282230067248";
 
 const produk = [
   { nama: "Es Teh", harga: 3000, gambar: "🧋" },
