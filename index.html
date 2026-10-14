@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresh Ice Tea</title>
+<title>Fresh Ice Tea - Pesan Online</title>
 
 <style>
 * {
@@ -22,13 +22,13 @@ body {
 header {
   background: #168447;
   color: white;
-  padding: 22px 16px;
   text-align: center;
+  padding: 23px 15px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 29px;
 }
 
 header p {
@@ -36,18 +36,18 @@ header p {
 }
 
 .hero {
-  background: linear-gradient(135deg, #d9ffe3, #ffffff);
   text-align: center;
-  padding: 28px 16px;
+  padding: 28px 15px;
+  background: linear-gradient(135deg, #d7ffe2, white);
 }
 
 .hero .gambar {
-  font-size: 76px;
+  font-size: 75px;
 }
 
 .hero h2 {
-  margin: 10px 0;
-  color: #13763d;
+  color: #168447;
+  margin: 8px 0;
 }
 
 .container {
@@ -58,7 +58,7 @@ header p {
 
 .judul {
   font-size: 21px;
-  margin: 12px 0;
+  margin: 15px 0;
 }
 
 .menu {
@@ -69,16 +69,16 @@ header p {
 
 .kartu {
   background: white;
+  border: 1px solid #e0f0e4;
   border-radius: 16px;
-  padding: 14px 10px;
+  padding: 14px 8px;
   text-align: center;
   box-shadow: 0 3px 12px #0000000d;
-  border: 1px solid #e0f2e5;
 }
 
 .foto {
   font-size: 48px;
-  margin: 5px 0;
+  margin: 5px;
 }
 
 .kartu h3 {
@@ -89,46 +89,52 @@ header p {
 .harga {
   color: #168447;
   font-weight: bold;
-  margin-bottom: 12px;
+  margin: 10px 0;
 }
 
 .kontrol {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 13px;
+  align-items: center;
+  gap: 14px;
 }
 
 .kontrol button {
+  width: 35px;
+  height: 35px;
   background: #168447;
   color: white;
   border: none;
   border-radius: 9px;
-  width: 34px;
-  height: 34px;
   font-size: 21px;
 }
 
 .jumlah {
   font-weight: bold;
-  min-width: 12px;
 }
 
 .formulir {
   background: white;
+  border-radius: 16px;
   padding: 18px;
   margin-top: 24px;
-  border-radius: 16px;
   box-shadow: 0 3px 12px #0000000d;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
 }
 
 input, textarea {
   width: 100%;
   padding: 12px;
+  margin-top: 7px;
   border: 1px solid #cfe4d5;
   border-radius: 10px;
-  margin: 7px 0 13px;
   font-size: 15px;
+  font-family: inherit;
 }
 
 textarea {
@@ -141,39 +147,45 @@ textarea {
   bottom: 0;
   left: 0;
   right: 0;
-  background: white;
-  padding: 13px 16px;
-  box-shadow: 0 -3px 14px #00000012;
   z-index: 10;
+  background: white;
+  padding: 13px 15px;
+  box-shadow: 0 -3px 14px #00000015;
 }
 
 .totalbar {
   max-width: 700px;
   margin: auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
 }
 
 .total {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: bold;
-}
-
-.pesan {
-  border: none;
-  background: #168447;
-  color: white;
-  padding: 13px 16px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 14px;
+  color: #168447;
 }
 
 .catatan {
-  color: #617568;
-  font-size: 13px;
+  color: #65776a;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.pesan {
+  background: #168447;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.pesan:active, .kontrol button:active {
+  opacity: 0.8;
 }
 </style>
 </head>
@@ -186,38 +198,33 @@ textarea {
 </header>
 
 <section class="hero">
-  <div class="gambar">🥤</div>
+  <div class="gambar">🥤🍹</div>
   <h2>Segarnya Bikin Nagih!</h2>
   <p>Pilih menu favoritmu dan pesan sekarang.</p>
 </section>
 
 <main class="container">
   <h2 class="judul">🍹 Daftar Menu</h2>
-
   <div class="menu" id="menu"></div>
 
   <section class="formulir">
     <h2 class="judul">📝 Data Pemesan</h2>
 
     <label for="nama">Nama kamu</label>
-    <input id="nama" placeholder="Masukkan nama" />
+    <input id="nama" placeholder="Masukkan nama" autocomplete="name">
 
     <label for="alamat">Alamat pengantaran</label>
     <textarea id="alamat" placeholder="Masukkan alamat lengkap"></textarea>
 
     <label for="catatan">Catatan pesanan</label>
     <textarea id="catatan" placeholder="Contoh: es sedikit, gula normal"></textarea>
-
-    <p class="catatan">
-      Pastikan nama dan alamat sudah benar sebelum mengirim pesanan.
-    </p>
   </section>
 </main>
 
 <div class="bawah">
   <div class="totalbar">
     <div>
-      <div class="catatan">Total pesanan</div>
+      <div class="catatan">TOTAL PESANAN</div>
       <div class="total" id="total">Rp0</div>
     </div>
     <button class="pesan" onclick="kirimPesanan()">
@@ -227,7 +234,9 @@ textarea {
 </div>
 
 <script>
-const nomor = "628560217885";
+// NOMOR WHATSAPP PEMILIK
+// Nomor 085607217885 ditulis menjadi 6285607217885
+const nomor = "6285607217885";
 
 const produk = [
   { nama: "Es Teh", harga: 3000, gambar: "🧋" },
@@ -310,21 +319,22 @@ function kirimPesanan() {
   const total = hitungTotal();
 
   const pesan =
-`🧋 PESANAN FRESH ICE TEA
+`🧋 PESANAN BARU FRESH ICE TEA
 
 Nama: ${nama}
 Alamat: ${alamat}
 
-Pesanan:
+Daftar pesanan:
 ${daftar}
 
 Total: ${rupiah(total)}
 Catatan: ${catatan || "-"}`;
 
-  const url = "https://wa.me/" + nomor + "?text=" +
+  const url =
+    "https://wa.me/" + nomor + "?text=" +
     encodeURIComponent(pesan);
 
-  window.open(url, "_blank");
+  window.location.href = url;
 }
 </script>
 
