@@ -3,165 +3,330 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#16834a">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fresh Ice Tea</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f3f9f3;color:#183b29;font-family:Arial,sans-serif}
-header{background:linear-gradient(135deg,#126b3b,#27a45b);color:white;padding:28px 20px;border-radius:0 0 25px 25px}
-header h1{font-size:29px;margin:0}
-header p{margin:8px 0 0}
-main{max-width:650px;margin:auto;padding:16px}
-h2{font-size:20px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:white;border:1px solid #e1eee3;border-radius:17px;overflow:hidden;box-shadow:0 4px 12px #183b2910}
-.pic{height:110px;display:grid;place-items:center;font-size:55px;background:#e3f6e7}
-.info{padding:11px}
-.name{font-weight:bold;min-height:34px;font-size:14px}
-.price{color:#16834a;font-weight:bold;margin:8px 0}
-.qty{display:flex;align-items:center;justify-content:space-between;gap:5px}
-.qty button{border:0;background:#16834a;color:white;border-radius:9px;width:32px;height:32px;font-size:20px}
-.qty input{width:35px;text-align:center;border:1px solid #d6e7da;border-radius:7px;padding:7px}
-.panel{margin-top:20px;background:white;border:1px solid #e1eee3;border-radius:17px;padding:16px}
-label{display:block;font-size:13px;font-weight:bold;margin-top:13px}
-input[type=text],textarea{width:100%;padding:12px;margin-top:7px;border:1px solid #d5e4d8;border-radius:10px;font:inherit}
-textarea{min-height:70px}
-.total{display:flex;justify-content:space-between;border-top:1px solid #e0ebe2;padding-top:15px;margin-top:16px;font-weight:bold;font-size:18px}
-#total{color:#16834a}
-.order{width:100%;border:0;border-radius:12px;background:#16834a;color:white;font-weight:bold;font-size:16px;padding:16px;margin-top:17px}
-.order:active{opacity:.8}
-.note{text-align:center;color:#718174;font-size:12px;line-height:1.5}
-footer{text-align:center;padding:18px;color:#718174;font-size:12px}
-@media(max-width:340px){main{padding:10px}.grid{gap:7px}.info{padding:8px}.name{font-size:13px}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3fff5;
+  color: #173d2b;
+  padding-bottom: 100px;
+}
+
+header {
+  background: #168447;
+  color: white;
+  padding: 22px 16px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+header p {
+  margin-bottom: 0;
+}
+
+.hero {
+  background: linear-gradient(135deg, #d9ffe3, #ffffff);
+  text-align: center;
+  padding: 28px 16px;
+}
+
+.hero .gambar {
+  font-size: 76px;
+}
+
+.hero h2 {
+  margin: 10px 0;
+  color: #13763d;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 16px;
+}
+
+.judul {
+  font-size: 21px;
+  margin: 12px 0;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.kartu {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: 0 3px 12px #0000000d;
+  border: 1px solid #e0f2e5;
+}
+
+.foto {
+  font-size: 48px;
+  margin: 5px 0;
+}
+
+.kartu h3 {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.harga {
+  color: #168447;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.kontrol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+}
+
+.kontrol button {
+  background: #168447;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  width: 34px;
+  height: 34px;
+  font-size: 21px;
+}
+
+.jumlah {
+  font-weight: bold;
+  min-width: 12px;
+}
+
+.formulir {
+  background: white;
+  padding: 18px;
+  margin-top: 24px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px #0000000d;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cfe4d5;
+  border-radius: 10px;
+  margin: 7px 0 13px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 75px;
+  resize: vertical;
+}
+
+.bawah {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 13px 16px;
+  box-shadow: 0 -3px 14px #00000012;
+  z-index: 10;
+}
+
+.totalbar {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.total {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.pesan {
+  border: none;
+  background: #168447;
+  color: white;
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.catatan {
+  color: #617568;
+  font-size: 13px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
   <h1>🧋 Fresh Ice Tea</h1>
-  <p>Segarnya bikin happy! 💚</p>
-  <p>Minuman segar dan camilan favoritmu.</p>
+  <p>Segar, enak, bikin semangat!</p>
 </header>
 
-<main>
-<h2>🍃 Pilih Menu Favoritmu</h2>
-<div class="grid" id="menu"></div>
+<section class="hero">
+  <div class="gambar">🥤</div>
+  <h2>Segarnya Bikin Nagih!</h2>
+  <p>Pilih menu favoritmu dan pesan sekarang.</p>
+</section>
 
-<div class="panel">
-<h2>🛍️ Detail Pesanan</h2>
-<label>Nama pelanggan *
-<input type="text" id="nama" placeholder="Masukkan nama kamu">
-</label>
-<label>Alamat / lokasi
-<input type="text" id="alamat" placeholder="Alamat atau ambil sendiri">
-</label>
-<label>Catatan pesanan
-<textarea id="catatan" placeholder="Contoh: Pop Mie rasa ayam"></textarea>
-</label>
+<main class="container">
+  <h2 class="judul">🍹 Daftar Menu</h2>
 
-<div class="total">
-<span>Total pesanan</span>
-<span id="total">Rp0</span>
-</div>
+  <div class="menu" id="menu"></div>
 
-<button class="order" onclick="pesan()">Pesan via WhatsApp ↗</button>
-<p class="note">Pesanan akan dibuka di WhatsApp. Periksa kembali sebelum mengirim.</p>
-</div>
+  <section class="formulir">
+    <h2 class="judul">📝 Data Pemesan</h2>
+
+    <label for="nama">Nama kamu</label>
+    <input id="nama" placeholder="Masukkan nama" />
+
+    <label for="alamat">Alamat pengantaran</label>
+    <textarea id="alamat" placeholder="Masukkan alamat lengkap"></textarea>
+
+    <label for="catatan">Catatan pesanan</label>
+    <textarea id="catatan" placeholder="Contoh: es sedikit, gula normal"></textarea>
+
+    <p class="catatan">
+      Pastikan nama dan alamat sudah benar sebelum mengirim pesanan.
+    </p>
+  </section>
 </main>
 
-<footer>© Fresh Ice Tea • Terima kasih sudah memesan 💚</footer>
+<div class="bawah">
+  <div class="totalbar">
+    <div>
+      <div class="catatan">Total pesanan</div>
+      <div class="total" id="total">Rp0</div>
+    </div>
+    <button class="pesan" onclick="kirimPesanan()">
+      Pesan via WhatsApp
+    </button>
+  </div>
+</div>
 
 <script>
-const produk=[
- {nama:"Es Teh",harga:3000,emoji:"🧋"},
- {nama:"Es Degan",harga:5000,emoji:"🥥"},
- {nama:"Kopi Susu",harga:5000,emoji:"☕"},
- {nama:"Es Jeruk",harga:4000,emoji:"🍊"},
- {nama:"Pop Mie Aneka Rasa",harga:6000,emoji:"🍜"},
- {nama:"Pop Ice",harga:4000,emoji:"🥤"},
- {nama:"Nutrisari",harga:3000,emoji:"🍹"},
- {nama:"Cilok",harga:5000,emoji:"🍡"}
+const nomor = "628560217885";
+
+const produk = [
+  { nama: "Es Teh", harga: 3000, gambar: "🧋" },
+  { nama: "Es Degan", harga: 5000, gambar: "🥥" },
+  { nama: "Kopi Susu", harga: 5000, gambar: "☕" },
+  { nama: "Es Jeruk", harga: 4000, gambar: "🍊" },
+  { nama: "Pop Mie Aneka Rasa", harga: 6000, gambar: "🍜" },
+  { nama: "Pop Ice", harga: 4000, gambar: "🥤" },
+  { nama: "Nutrisari", harga: 3000, gambar: "🍹" },
+  { nama: "Cilok", harga: 5000, gambar: "🍡" }
 ];
 
-const nomorWhatsApp="6285607217885";
-const jumlah=produk.map(()=>0);
-const rupiah=n=>"Rp"+n.toLocaleString("id-ID");
-const menu=document.getElementById("menu");
+const jumlah = produk.map(() => 0);
+const menu = document.getElementById("menu");
 
-produk.forEach((p,i)=>{
- menu.innerHTML+=`
- <div class="card">
-  <div class="pic">${p.emoji}</div>
-  <div class="info">
-   <div class="name">${p.nama}</div>
-   <div class="price">${rupiah(p.harga)}</div>
-   <div class="qty">
-    <button type="button" onclick="ubah(${i},-1)">−</button>
-    <input id="q${i}" type="number" min="0" max="99"
-     value="0" inputmode="numeric"
-     onchange="isi(${i},this.value)">
-    <button type="button" onclick="ubah(${i},1)">+</button>
-   </div>
-  </div>
- </div>`;
+function rupiah(angka) {
+  return "Rp" + angka.toLocaleString("id-ID");
+}
+
+produk.forEach((item, i) => {
+  const kartu = document.createElement("div");
+  kartu.className = "kartu";
+
+  kartu.innerHTML = `
+    <div class="foto">${item.gambar}</div>
+    <h3>${item.nama}</h3>
+    <div class="harga">${rupiah(item.harga)}</div>
+    <div class="kontrol">
+      <button onclick="ubahJumlah(${i}, -1)">−</button>
+      <span class="jumlah" id="jumlah-${i}">0</span>
+      <button onclick="ubahJumlah(${i}, 1)">+</button>
+    </div>
+  `;
+
+  menu.appendChild(kartu);
 });
 
-function ubah(i,n){
- jumlah[i]=Math.max(0,Math.min(99,jumlah[i]+n));
- document.getElementById("q"+i).value=jumlah[i];
- hitung();
+function ubahJumlah(i, perubahan) {
+  jumlah[i] = Math.max(0, jumlah[i] + perubahan);
+  document.getElementById("jumlah-" + i).textContent = jumlah[i];
+  hitungTotal();
 }
 
-function isi(i,n){
- jumlah[i]=Math.max(0,Math.min(99,parseInt(n)||0));
- document.getElementById("q"+i).value=jumlah[i];
- hitung();
+function hitungTotal() {
+  const total = produk.reduce(
+    (hasil, item, i) => hasil + item.harga * jumlah[i],
+    0
+  );
+
+  document.getElementById("total").textContent = rupiah(total);
+  return total;
 }
 
-function hitung(){
- const total=produk.reduce((s,p,i)=>s+p.harga*jumlah[i],0);
- document.getElementById("total").textContent=rupiah(total);
+function kirimPesanan() {
+  const nama = document.getElementById("nama").value.trim();
+  const alamat = document.getElementById("alamat").value.trim();
+  const catatan = document.getElementById("catatan").value.trim();
+
+  const dipilih = produk
+    .map((item, i) => ({
+      ...item,
+      jumlah: jumlah[i]
+    }))
+    .filter(item => item.jumlah > 0);
+
+  if (!nama || !alamat) {
+    alert("Isi nama dan alamat terlebih dahulu ya!");
+    return;
+  }
+
+  if (dipilih.length === 0) {
+    alert("Pilih minimal satu menu terlebih dahulu!");
+    return;
+  }
+
+  const daftar = dipilih.map(item =>
+    `${item.nama} x${item.jumlah} = ${rupiah(item.harga * item.jumlah)}`
+  ).join("\n");
+
+  const total = hitungTotal();
+
+  const pesan =
+`🧋 PESANAN FRESH ICE TEA
+
+Nama: ${nama}
+Alamat: ${alamat}
+
+Pesanan:
+${daftar}
+
+Total: ${rupiah(total)}
+Catatan: ${catatan || "-"}`;
+
+  const url = "https://wa.me/" + nomor + "?text=" +
+    encodeURIComponent(pesan);
+
+  window.open(url, "_blank");
 }
-
-function pesan(){
- const nama=document.getElementById("nama").value.trim();
- const alamat=document.getElementById("alamat").value.trim();
- const catatan=document.getElementById("catatan").value.trim();
-
- if(!nama){
-  alert("Isi nama pelanggan dulu ya.");
-  document.getElementById("nama").focus();
-  return;
- }
-
- const pilihan=produk
-  .map((p,i)=>({...p,jumlah:jumlah[i]}))
-  .filter(p=>p.jumlah>0);
-
- if(!pilihan.length){
-  alert("Pilih minimal satu menu dulu ya.");
-  return;
- }
-
- const total=pilihan.reduce((s,p)=>s+p.harga*p.jumlah,0);
- let teks=
-  "🧋 PESANAN FRESH ICE TEA\n\n"+
-  "Nama: "+nama+"\n"+
-  "Alamat: "+(alamat||"Belum diisi")+"\n\n"+
-  pilihan.map(p=>
-   p.nama+" x"+p.jumlah+" = "+rupiah(p.harga*p.jumlah)
-  ).join("\n")+
-  "\n\nTOTAL: "+rupiah(total)+
-  (catatan?"\nCatatan: "+catatan:"")+
-  "\n\nMohon konfirmasi pesanan saya. Terima kasih!";
-
- const url="https://wa.me/"+nomorWhatsApp+
-  "?text="+encodeURIComponent(teks);
-
- window.location.href=url;
-}
-
-hitung();
 </script>
+
 </body>
 </html>
