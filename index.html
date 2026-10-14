@@ -457,5 +457,26 @@ function kirimPesanan() {
 
 </script>
 
+<button onclick="aktifkanNotifikasi()">Aktifkan Notifikasi</button>
+
+<script>
+async function aktifkanNotifikasi() {
+  if (!("Notification" in window)) {
+    alert("Browser tidak mendukung notifikasi");
+    return;
+  }
+
+  const izin = await Notification.requestPermission();
+
+  if (izin === "granted") {
+    new Notification("Fresh Ice Tea", {
+      body: "Notifikasi berhasil diaktifkan!"
+    });
+  } else {
+    alert("Izin notifikasi ditolak");
+  }
+}
+</script>
+
 </body>
 </html>
